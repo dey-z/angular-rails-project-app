@@ -1,0 +1,81 @@
+<div
+	class="container pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center"
+>
+	<h1 class="display-4">Project's Listing</h1>
+	<p class="lead">
+		Basic CRUD using angular
+	</p>
+
+	<table class="table">
+		<tr>
+			<th>ProjectID</th>
+			<th>ProjectName</th>
+			<th>Region</th>
+			<th>Actions</th>
+		</tr>
+
+		<tbody>
+			<tr *ngFor="let project of projects">
+				<td>{{ project.project_id }}</td>
+				<td>{{ project.project_name }}</td>
+				<td>{{ project.region }}</td>
+				<td colspan="2">
+					<button class="btn btn-secondary" (click)="editProject(project, template)">
+						Edit
+					</button>
+					|
+					<button class="btn btn-danger" (click)="deleteProject(project.id)">
+						Delete
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<button class="btn btn-primary float-right mt-4" (click)="newProject(template)">
+		Insert New
+	</button>
+</div>
+
+<ng-template #template>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">
+			{{ isNew ? "New Project" : "Update Project" }}
+		</h4>
+		<button
+			type="button"
+			class="close pull-right"
+			aria-label="Close"
+			(click)="modalRef.hide()"
+		>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form
+			[formGroup]="projectForm"
+			(ngSubmit)="isNew ? createProject() : updateProject()"
+			novalidate
+		>
+			<input type="hidden" formControlName="id" class="form-control" />
+			<div class="form-group">
+				<label>ProjectID</label>
+				<input type="text" formControlName="project_id" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label>ProjectName</label>
+				<input type="text" formControlName="project_name" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label>Region</label>
+				<textarea
+					class="form-control"
+					formControlName="region"
+					rows="3"
+				></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</ng-template>
