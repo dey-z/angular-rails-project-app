@@ -12,7 +12,7 @@
 yarn
 
 ## webpack dev server + puma
-bundle exec puma & yarn run dev
+yarn run dev & bundle exec puma
 
 ## db migration
 using ridgepole
