@@ -75,6 +75,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    diffy (3.4.0)
     erubi (1.10.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -145,6 +146,9 @@ GEM
       ffi (~> 1.0)
     regexp_parser (2.2.1)
     rexml (3.2.5)
+    ridgepole (1.0.3)
+      activerecord (>= 5.1, < 7.1)
+      diffy
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -211,6 +215,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4)
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.6)
+  ridgepole
   sass-rails (>= 6)
   selenium-webdriver
   spring
