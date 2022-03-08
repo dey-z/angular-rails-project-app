@@ -7,9 +7,16 @@
 - (latest yarn, node.js)  
 - angular < v13
 - webpacker
+- mysql DB
 
 ## yarn install
 $ yarn
+
+## db create and seed
+```bash
+bundle exec rake db:create
+bundle exec rake db:seed
+```
 
 ## webpack dev server + puma
 $ yarn run dev & bundle exec puma
