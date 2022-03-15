@@ -1,9 +1,10 @@
-class ProjectsController < ApplicationController
+class TargetsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
 
   # GET /projects or /projects.json
   def index
     @projects = Project.all
+    render json: @projects, status: :ok
   end
 
   # GET /projects/1 or /projects/1.json

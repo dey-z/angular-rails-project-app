@@ -18,7 +18,7 @@ export class ProjectService {
 	};
 
 	getProjects(): Observable<Project[]> {
-		return this.http.get("/projects.json").pipe(
+		return this.http.get("/targets").pipe(
 			map((projects: Project[]) =>
 				projects.map((project) => {
 					return new Project(project.id, project.project_id, project.project_name, project.region);
