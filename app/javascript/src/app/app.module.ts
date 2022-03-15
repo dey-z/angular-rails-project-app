@@ -7,9 +7,10 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppBootstrapModule } from "./app-bootstrap.module";
 import { ProjectIndexComponent } from "./project/index/index.component";
+import { ProjectAddComponent } from "./project/add/add.component";
 
 @NgModule({
-	declarations: [AppComponent, ProjectIndexComponent],
+	declarations: [AppComponent, ProjectIndexComponent, ProjectAddComponent],
 	imports: [
 		HttpClientModule,
 		AppRoutingModule,

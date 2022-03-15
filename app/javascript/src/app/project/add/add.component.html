@@ -3,7 +3,7 @@
 >
 	<h1 class="display-4">Projects List</h1>
 	<p class="lead">
-		Index Page
+		Add Page
 	</p>
 
 	<table class="table">
@@ -11,7 +11,6 @@
 			<th>ProjectID</th>
 			<th>ProjectName</th>
 			<th>Region</th>
-			<th>Actions</th>
 		</tr>
 
 		<tbody>
@@ -19,21 +18,12 @@
 				<td>{{ project.project_id }}</td>
 				<td>{{ project.project_name }}</td>
 				<td>{{ project.region }}</td>
-				<td colspan="2">
-					<button class="btn btn-secondary" (click)="editProject(project, template)">
-						Edit
-					</button>
-					|
-					<button class="btn btn-danger" (click)="deleteProject(project.id)">
-						Delete
-					</button>
-				</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<button class="btn btn-primary float-right mt-4" (click)="btnClick()">
-		Add
+	<button class="btn btn-primary float-right mt-4" (click)="newProject(template)">
+		Insert Here
 	</button>
 </div>
 
