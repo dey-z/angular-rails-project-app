@@ -1,16 +1,15 @@
 import { Component, OnInit, TemplateRef } from "@angular/core";
-import { Router } from "@angular/router";
 import { FormGroup, FormBuilder } from "@angular/forms";
 import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
 
-import templateString from "./index.component.html";
+import templateString from "./add.component.html";
 import { ProjectService } from "../project.service";
 import { Project } from "../project.class";
 
 @Component({
 	template: templateString,
 })
-export class ProjectIndexComponent implements OnInit {
+export class ProjectAddComponent implements OnInit {
 	projects: Project[];
 	modalRef: BsModalRef;
 	projectForm: FormGroup;
@@ -19,13 +18,8 @@ export class ProjectIndexComponent implements OnInit {
 	constructor(
 		public fb: FormBuilder,
 		private projectService: ProjectService,
-		private modalService: BsModalService,
-		private router: Router
+		private modalService: BsModalService
 	) {}
-
-	public btnClick() {
-		this.router.navigateByUrl("projects/add");
-	}
 
 	public newProject(template: TemplateRef<any>) {
 		this.reset();
@@ -54,8 +48,8 @@ export class ProjectIndexComponent implements OnInit {
 	}
 
 	public updateProject() {
-		const { project_id } = this.projectForm.value;
-		this.projectService.update(project_id, this.projectForm.value).subscribe(() => {
+		const { id } = this.projectForm.value;
+		this.projectService.update(id, this.projectForm.value).subscribe(() => {
 			console.log("Project updated!");
 			this.reset();
 
@@ -63,9 +57,9 @@ export class ProjectIndexComponent implements OnInit {
 		});
 	}
 
-	public deleteProject(project_id) {
+	public deleteProject(id) {
 		if (confirm("Are you sure?")) {
-			this.projectService.delete(project_id).subscribe(() => {
+			this.projectService.delete(id).subscribe(() => {
 				console.log("Project deleted!");
 				this.reset();
 			});
