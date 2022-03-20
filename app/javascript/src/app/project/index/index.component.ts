@@ -54,8 +54,8 @@ export class ProjectIndexComponent implements OnInit {
 	}
 
 	public updateProject() {
-		const { id } = this.projectForm.value;
-		this.projectService.update(id, this.projectForm.value).subscribe(() => {
+		const { project_id } = this.projectForm.value;
+		this.projectService.update(project_id, this.projectForm.value).subscribe(() => {
 			console.log("Project updated!");
 			this.reset();
 
@@ -63,9 +63,9 @@ export class ProjectIndexComponent implements OnInit {
 		});
 	}
 
-	public deleteProject(id) {
+	public deleteProject(project_id) {
 		if (confirm("Are you sure?")) {
-			this.projectService.delete(id).subscribe(() => {
+			this.projectService.delete(project_id).subscribe(() => {
 				console.log("Project deleted!");
 				this.reset();
 			});

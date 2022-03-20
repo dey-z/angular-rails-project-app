@@ -1,7 +1,15 @@
-create_table "projects", force: :cascade do |t|
-  t.string    "project_id"
+create_table "T_PJ_List", force: :cascade, primary_key: :project_id do |t|
   t.string    "project_name"
   t.string    "region"
   t.datetime  "created_at"
   t.datetime  "updated_at"
+end
+
+execute("ALTER TABLE T_PJ_List MODIFY COLUMN project_id varchar(255)") do |c|
+  # Execute SQL only if the primary key data type has not changed yet from bigint to varchar(255)
+  # MySQL specific SQL query
+  c.raw_connection.query(<<-SQL).each.size.zero?
+    SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS 
+      WHERE table_name = 'T_PJ_Bar' AND COLUMN_NAME = 'project_id' and DATA_TYPE != "bigint";
+  SQL
 end

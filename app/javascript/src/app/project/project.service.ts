@@ -18,7 +18,7 @@ export class ProjectService {
 	};
 
 	getProjects(): Observable<Project[]> {
-		return this.http.get("/targets").pipe(
+		return this.http.get("/ajax/targets").pipe(
 			map((projects: Project[]) =>
 				projects.map((project) => {
 					return new Project(project.id, project.project_id, project.project_name, project.region);
@@ -29,7 +29,7 @@ export class ProjectService {
 
 	create(project): Observable<Project> {
 		return this.http.post<Project>(
-			"/projects.json",
+			"/ajax/targets",
 			JSON.stringify(project),
 			this.httpOptions
 		);
@@ -37,13 +37,13 @@ export class ProjectService {
 
 	update(id, project): Observable<Project> {
 		return this.http.put<Project>(
-			"/projects/" + id + ".json",
+			"/ajax/targets/" + id,
 			JSON.stringify(project),
 			this.httpOptions
 		);
 	}
 
 	delete(id) {
-		return this.http.delete<Project>("/projects/" + id + ".json", this.httpOptions);
+		return this.http.delete<Project>("/ajax/targets/" + id, this.httpOptions);
 	}
 }
