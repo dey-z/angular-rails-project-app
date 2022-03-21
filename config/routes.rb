@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   # replicate angular routes here
-  get 'projects', to: 'angular_application#index'
+  get 'mib', to: 'angular_application#index'
+  get '/projects', to: 'angular_application#index'
   get '/projects/add', to: 'angular_application#index'
 end
