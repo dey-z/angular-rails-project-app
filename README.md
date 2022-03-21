@@ -7,26 +7,33 @@
 - (latest yarn, node.js)  
 - angular < v13
 - webpacker
-- mysql DB
+- middleware using docker(nginx, mysql, redis)
 
 ## yarn install
+```bash
 $ yarn
+```
 
 ## db create and seed
 ```bash
 bundle exec rake db:create
-bundle exec rake db:seed
+```
+
+## docker
+```bash
+$ cd docker && ./start.sh
 ```
 
 ## webpack dev server + puma
+```bash
 $ yarn run dev & bundle exec puma
+```
 
 ## db migration
 **using ridgepole**
 ```bash
-bundle exec ridgepole -c config/database.yml -E development --apply -f db/Schemafile
+bundle exec ridgepole -c '{host: 127.0.0.1, adapter: mysql2, encoding: utf8mb4, pool: 5, username: root, password: test, database: angular_rails_project_app_development}' -E development --apply -f db/Schemafile
 ```
 
 ## sample
-**also check wiki for updates**
-![Screen Shot 2022-03-07 at 14 53 29](https://user-images.githubusercontent.com/48423778/156976062-25fef772-02db-42cf-9d07-5e81223dad86.png)
+**check wiki for updates**
