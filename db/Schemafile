@@ -10,6 +10,6 @@ execute("ALTER TABLE T_PJ_List MODIFY COLUMN project_id varchar(255)") do |c|
   # MySQL specific SQL query
   c.raw_connection.query(<<-SQL).each.size.zero?
     SELECT DATA_TYPE FROM INFORMATION_SCHEMA.COLUMNS 
-      WHERE table_name = 'T_PJ_Bar' AND COLUMN_NAME = 'project_id' and DATA_TYPE != "bigint";
+      WHERE table_name = 'T_PJ_List' AND COLUMN_NAME = 'project_id' and DATA_TYPE != "bigint";
   SQL
 end
