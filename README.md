@@ -14,8 +14,9 @@
 $ yarn
 ```
 
-## db create and seed
+## bundle -> db create and seed
 ```bash
+bundle install
 bundle exec rake db:create
 ```
 
