@@ -35,6 +35,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'foreman'
 end
 
 group :development do
